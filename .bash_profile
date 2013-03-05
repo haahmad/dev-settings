@@ -67,11 +67,11 @@ alias gcp='git cherry-pick'
 #Automatically run ls after cd
 function cd()
 {
-     /opt/local/bin/clear && builtin cd "$*" && ls
+     /opt/local/bin/clear && builtin cd "$*" && ls -a
 }
 
 #Automatically run ls after clear
 function clear()
 {
-     /opt/local/bin/clear && ls
+     /opt/local/bin/clear && ls -a
 }
