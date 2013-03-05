@@ -20,11 +20,7 @@ set pastetoggle=<F12>
 "Automatically delete trailing whitespaces
 autocmd BufWritePre * :%s/\s\+$//e
 
-" comment and uncomment large blocks of code in visual mode
-vmap \k :s!^!//!<CR>; noh
-vmap \K :s!^//!!<CR>; noh
-
-" Turns off swapfiles and backups 
+" Turns off swapfiles and backups
 set nobackup
 set nowb
 set noswapfile"
@@ -56,6 +52,7 @@ call pathogen#runtime_append_all_bundles()""
 """"""""""""""""""""""""""""""""""
 "NERDtree plugin
 """"""""""""""""""""""""""""""""""
-autocmd vimenter * NERDTree
-let g:NERDTreeWinSize = 20 
+"autocmd vimenter * NERDTree
+nnoremap <S-N> :NERDTreeToggle<CR>
+let g:NERDTreeWinSize = 20
 
