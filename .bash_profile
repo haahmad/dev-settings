@@ -1,8 +1,5 @@
 #basic preferences
 export CLICOLOR=1
-#export LSCOLORS=ExFxCxDxBxegedabagacad
-export PATH=/opt/local/bin:/opt/local/sbin/:$PATH
-export MANPATH=/opt/local/share/man:$MANPATH
 
 #Prompt and prompt colors
 # 30m - Black
@@ -36,14 +33,28 @@ export PS1="$BLACKBOLD[\t]$GREENBOLD \u@\h\[\033[00m\]:$BLUEBOLD\w\[\033[00m\]\n
 }
 prompt
 
+# git config --global color.status auto
+# git config --global color.diff auto
+# git config --global color.interactive auto
+# git config --global color.branch auto
 
 #blackberry native developer kit
-export BBNDK=/Applications/bbndk
-source $BBNDK/bbndk-env.sh
+export BBNDK_INSTALLDIR=/Applications/Momentics.app
+source $BBNDK_INSTALLDIR/bbndk-env_127_0_1_5708.sh
 
-# Set git autocompletion and PS1 integration
-if [ -f /usr/local/git/contrib/completion/git-completion.bash ]; then
-    . /usr/local/git/contrib/completion/git-completion.bash
+export PATH=/usr/local/bin:$PATH
+export platform=macosx
+
+export RICHMOND_ROOT=$HOME/dev
+export QCONF_OVERRIDE=$RICHMOND_ROOT/qconf-override.mk
+
+#WebKit Tools and Scripts
+export PATH=$PATH:$RICHMOND_ROOT/webkit/Tools/Scripts:$RICHMOND_ROOT/platform/tools/pb:$RICHMOND_ROOT/browser/build-node/bin
+
+export BINDING_CMAKE_ARGS="-DQT_QMAKE_EXECUTABLE=/usr/local/bin/qmake"
+
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
 fi
 
 #useful aliases
@@ -67,11 +78,11 @@ alias gcp='git cherry-pick'
 #Automatically run ls after cd
 function cd()
 {
-     /opt/local/bin/clear && builtin cd "$*" && ls -a
+     /usr/bin/clear && builtin cd "$*" && ls -a
 }
 
 #Automatically run ls after clear
 function clear()
 {
-     /opt/local/bin/clear && ls -a
+     /usr/bin/clear && ls -a
 }
